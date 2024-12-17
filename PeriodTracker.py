@@ -1,18 +1,15 @@
 # Main program
 
-import pandas as pd
+#import pandas as pd
 import time
 import calendar
 
+TrackPoint = {'date':'', 'type':'', 'extra':''}
+InstanceType = {'Period Cramps Start':1, 'Period Cramps Persist':2, 'Period Cramps End':3, 'Ovulation Starts': 4, 'User Note':5}
+
 def Enter_Data ():
     date = calendar.datetime.datetime.ctime
-    print('1: Period Cramps Starts\n',
-          '2: Period Cramps Persists\n',
-          '3: Period Cramps Ends\n',
-          '4: Ovulation Starts\n',
-          '5: User Note')
-    instanceType = getInstanceType() # Select from options 1 - 5 for now, would like to make a gui for this eventually
-    
+    print('Enter a number corresponding to the type of data you\'d like to track:\n', InstanceType)
     def getInstanceType ():
         
         def invalidInput ():
@@ -40,6 +37,8 @@ def Enter_Data ():
                     invalidInput()
         except ValueError:
             invalidInput()
+    instanceType = getInstanceType() # Select from options 1 - 5 for now, would like to make a gui for this eventually
+    
     return
 
 # Loads the tracked data from a file
@@ -51,3 +50,4 @@ def Load_Data ():
 def Save_Data ():
     with open ('.\\PeriodData.csv', 'w+') as outfile:
         return
+
